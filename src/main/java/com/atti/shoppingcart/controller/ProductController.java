@@ -35,6 +35,10 @@ public class ProductController {
 	public double getProductPriceByNameAndQuantity(@RequestParam String productname, @RequestParam int unitcount) {
 		return productService.getPricePerProduct(productname, unitcount);
 	}
+	/**
+	 * Get details of all products including price per unit and price per fifty units
+	 * @return Products
+	 */
 	@GetMapping("/all")
 	public List<Product> getAllProducts(){
 		System.out.println("request recieved");
