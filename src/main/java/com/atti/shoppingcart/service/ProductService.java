@@ -47,6 +47,6 @@ public class ProductService {
 	}
 
 	public List<Product> findAll() {
-		return productRepository.findAll();
+		return productRepository.findAllWithPricePerFiftyUnits();
 	}
 }

@@ -1,6 +1,7 @@
 package com.atti.shoppingcart.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -11,6 +12,16 @@ public class Product {
 	private String productName;
 	private int unitPerCarton;
 	private double pricePerCarton;
+	
+	@Transient
+	private double pricePerFifty;
+	
+	public double getPricePerFifty() {
+		return pricePerFifty;
+	}
+	public void setPricePerFifty(double pricePerFifty) {
+		this.pricePerFifty = pricePerFifty;
+	}
 	public String getProductId() {
 		return productId;
 	}
