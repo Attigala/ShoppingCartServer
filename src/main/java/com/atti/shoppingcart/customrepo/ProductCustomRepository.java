@@ -1,14 +1,13 @@
 package com.atti.shoppingcart.customrepo;
 
+import com.atti.shoppingcart.model.Product;
+
 public interface ProductCustomRepository {
 	/**
-	 * Queries the database for the given product details and determine the final price
-	 * based on the number of units to be bought.
-	 * If the quantity is a single unit then a 30% charge will be added.
-	 * Otherwise price will be calculated for cartons and remaining units.
+	 * Queries the database for the given product 
 	 * @param name 
 	 * @param unitcount
-	 * @return price
+	 * @return Product
 	 */
-	public double findProductPriceByProductNameAndUnits(String name, int unitcount);
+	public Product findProductPriceByProductName(String name);
 }
