@@ -30,12 +30,10 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository {
 	}
 
 	@Override
-	public List<Product> findAllWithPricePerFiftyUnits() {
+	public List<Product> findAllWithDerivedAttributes() {
 		// TODO Auto-generated method stub
 		List<Product> products = mongoTemplate.findAll(Product.class);
-		for(Product product : products) {
-			product.setPricePerFifty((50/product.getUnitPerCarton()) * 50 * 0.9);
-		}
+		
 		return products;
 	}
 

@@ -25,10 +25,25 @@ public class ProductService {
 	public double getPricePerProduct(String productName, int unitCount) {
 		Product product = productRepository.findProductPriceByProductName(productName);
 		
-		double price = 0;
+		double price = calculatePrice(product, unitCount);
+		
+		return price;
+	}
 
-		int numberOfCartons = unitCount / product.getUnitPerCarton();
-		int numberOfLooseUnits = unitCount % product.getUnitPerCarton();
+	public List<Product> findAll() {
+		
+		List<Product> products =  productRepository.findAllWithDerivedAttributes();
+		for(Product product : products) {
+			product.setPricePerFifty(calculatePrice(product, 50));
+			product.setUnitPrice(calculatePrice(product, 1));
+		}
+		return products;
+	}
+	
+	private double calculatePrice(Product product, int units) {
+		double price = 0;
+		int numberOfCartons = units / product.getUnitPerCarton();
+		int numberOfLooseUnits = units % product.getUnitPerCarton();
 
 		double unitPrice = product.getPricePerCarton() / product.getUnitPerCarton();
 
@@ -44,9 +59,5 @@ public class ProductService {
 					: price + (numberOfLooseUnits * unitPrice);
 		}
 		return price;
-	}
-
-	public List<Product> findAll() {
-		return productRepository.findAllWithPricePerFiftyUnits();
 	}
 }

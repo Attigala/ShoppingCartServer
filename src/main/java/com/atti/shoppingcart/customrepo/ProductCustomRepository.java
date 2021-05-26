@@ -13,5 +13,5 @@ public interface ProductCustomRepository {
 	 */
 	public Product findProductPriceByProductName(String name);
 	
-	public List<Product> findAllWithPricePerFiftyUnits();
+	public List<Product> findAllWithDerivedAttributes();
 }

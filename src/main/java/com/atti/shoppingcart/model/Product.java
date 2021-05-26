@@ -16,6 +16,15 @@ public class Product {
 	@Transient
 	private double pricePerFifty;
 	
+	@Transient
+	private double unitPrice;
+	
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
 	public double getPricePerFifty() {
 		return pricePerFifty;
 	}
